@@ -23,3 +23,6 @@ print(2**10)
 1024
 ```
 
+## 1.畫面示例
+![GitHub Logo](/images/03-1-1.jpg)
+
