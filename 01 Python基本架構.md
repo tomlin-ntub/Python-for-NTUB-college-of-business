@@ -44,6 +44,7 @@
         |       |        |__ ...
         |       |        
         |       |___ 3-2.函式(functions)
+        |                |__ print()        
         |                |__ split()
         |                |__ sort()
         |                |__ strip()
