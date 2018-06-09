@@ -13,6 +13,7 @@
 # 讀入CSV檔的範例
 #------------------------------
 import csv
+
 with open('vegfru.csv', 'r', encoding='UTF-8') as file:
     data = csv.reader(file, delimiter=',', quotechar='"')
     for row in data:
