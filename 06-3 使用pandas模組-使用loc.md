@@ -21,14 +21,16 @@ import pandas as pd
 df = pd.read_csv('iris.csv', names=['sepalL', 'sepalW', 'petalL', 'petalW', 'species'])
 
 #選取某些記錄的所有欄位
-df2 = df.loc[df['sepalL'] >= 6]
-print(df2)
-
-#選取某些記錄的某些欄位
-print(df2[['sepalL', 'sepalW']])
+print(df.loc[df['sepalL'] >= 6])
 
 #選取某些記錄的所有欄位
 print(df.loc[(df['sepalL'] > 6) & (df['sepalL'] < 7)])
+
+#選取某些記錄的某些欄位
+print(df.loc[df.sepalL>=6, ['sepalL','sepalW']]) 
+
+#選取某些記錄的某些欄位
+print(df.loc[(df['sepalL'] > 6) & (df['sepalL'] < 7), ['sepalL','sepalW']]) 
 ```
 
 ## [範例-1] 執行結果
