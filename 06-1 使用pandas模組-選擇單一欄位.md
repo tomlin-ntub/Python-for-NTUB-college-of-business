@@ -1,4 +1,4 @@
-# 06-1 使用pandas模組
+# 06-1 使用pandas模組-選擇單一欄位
 
 ### 使用pandas模組讀入csv檔, 得到一個data frame.
 
