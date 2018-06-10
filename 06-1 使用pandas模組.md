@@ -32,7 +32,7 @@ print(df['sepalL'][df['species']=='山鳶尾花'])
 
 ## [範例-1] 執行結果
 ```
-        sepalL  sepalW  petalL  petalW  species
+     sepalL  sepalW  petalL  petalW  species
 0       5.1     3.5     1.4     0.2     山鳶尾花
 1       4.9     3.0     1.4     0.2     山鳶尾花
 2       4.7     3.2     1.3     0.2     山鳶尾花
