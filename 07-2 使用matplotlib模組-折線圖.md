@@ -5,7 +5,7 @@
 以下是一個讀入「stocks.csv」檔案, 再繪出圖表的例子:
 
 ## [範例-1] 畫面示例
-![GitHub Logo](/images/07-1-1.jpg)
+![GitHub Logo](/images/07-2-1.jpg)
 
 ## [範例-1] 程式
 ```python
