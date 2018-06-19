@@ -21,7 +21,7 @@ import numpy as np
 df = pd.read_csv('scores.csv', names=['id', 'gender', 'chi', 'eng', 'mat', 'soc', 'nat', 'lec'])
 
 #----------------------------------
-#取出一筆記錄的各個成績
+# 取出一筆記錄(id=100)的各科成績
 #----------------------------------
 data = df.loc[df['id'] == 100]
 chi=int(data['chi'])
