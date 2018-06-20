@@ -15,6 +15,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+
 #----------------------------------
 # 讀入資料CSV檔
 #----------------------------------
@@ -23,15 +24,8 @@ df = pd.read_csv('scores.csv', names=['id', 'gender', 'chi', 'eng', 'mat', 'soc'
 #----------------------------------
 # 取出一筆記錄(id=100)的各科成績
 #----------------------------------
-data = df.loc[df['id'] == 100]
-chi=int(data['chi'])
-eng=int(data['eng'])
-mat=int(data['mat'])
-soc=int(data['soc'])
-nat=int(data['nat'])
-lec=int(data['lec'])
-
-scores = [chi, eng, mat, soc, nat, lec]
+data = df.loc[df['id'] == 100, ['chi', 'eng', 'mat', 'soc', 'nat', 'lec']]
+scores = data.values.tolist()[0]
 
 #---------------------------
 # 圖形設定
