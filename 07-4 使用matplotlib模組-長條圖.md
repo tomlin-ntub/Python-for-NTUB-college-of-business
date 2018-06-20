@@ -15,6 +15,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+
 #----------------------------------
 # 讀入資料CSV檔
 #----------------------------------
