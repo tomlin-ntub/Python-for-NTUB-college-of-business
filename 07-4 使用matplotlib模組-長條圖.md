@@ -1,4 +1,4 @@
-# 07-4 使用matplotlib模組-直條圖
+# 07-4 使用matplotlib模組-長條圖
 
 ### 使用pandas模組讀入csv檔, 再使用matplotlib繪出圖表.
 
