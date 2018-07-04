@@ -1,4 +1,4 @@
-# 07-2 使用matplotlib模組-折線圖
+# 10-2 使用matplotlib模組-折線圖
 
 ### 使用pandas模組讀入csv檔, 再使用matplotlib繪出圖表.
 
