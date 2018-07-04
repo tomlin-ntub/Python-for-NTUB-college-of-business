@@ -1,4 +1,4 @@
-# 06-8 使用pandas模組-DataFrame轉List
+# 9-8 使用pandas模組-DataFrame轉List
 
 ### 使用pandas模組讀入CSV內容存成DataFrame, 再依其他需要轉成List.
 
