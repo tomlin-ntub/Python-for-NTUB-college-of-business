@@ -4,7 +4,7 @@
 
 
 ## [範例-1] 畫面示例
-![GitHub Logo](/images/05-1-1.jpg)
+![GitHub Logo](/images/05a-1-1.jpg)
 
 ## [範例-1] 程式
 ```python
