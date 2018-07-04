@@ -34,3 +34,66 @@ print(c)
 大學
 ```
 
+
+
+## [範例-2] 程式
+```python
+#------------------------
+# 建立一個str物件
+#------------------------
+sentence='With legacies as varied as its adventure landscape and spirited traditions thriving alongside the cream of Asian sophistication, Taiwan is a continent on one green island.'
+
+print(sentence)
+print('-'*30)
+
+#------------------------
+# str的方法
+#------------------------
+print('轉大寫')
+print(sentence.upper()) 
+print('-'*30)
+
+#------------------------
+# str的方法
+#------------------------
+print('結束文字檢查')
+print(sentence.endswith('.')) 
+print(sentence.endswith('?')) 
+print('-'*30)
+
+#------------------------
+# str的方法
+#------------------------
+print('更改文字')
+print(sentence.replace('Taiwan', 'TAIWAN')) 
+print('-'*30)
+
+#------------------------
+# str的方法
+#------------------------
+print('切割文字')
+print(sentence.split(' ')) 
+print('-'*30)
+```
+
+## [範例-2] 執行結果
+```
+With legacies as varied as its adventure landscape and spirited traditions thriving alongside the cream of Asian sophistication, Taiwan is a continent on one green island.
+------------------------------
+轉大寫
+WITH LEGACIES AS VARIED AS ITS ADVENTURE LANDSCAPE AND SPIRITED TRADITIONS THRIVING ALONGSIDE THE CREAM OF ASIAN SOPHISTICATION, TAIWAN IS A CONTINENT ON ONE GREEN ISLAND.
+------------------------------
+結束文字檢查
+True
+False
+------------------------------
+更改文字
+With legacies as varied as its adventure landscape and spirited traditions thriving alongside the cream of Asian sophistication, TAIWAN is a continent on one green island.
+------------------------------
+切割文字
+['With', 'legacies', 'as', 'varied', 'as', 'its', 'adventure', 'landscape', 'and', 'spirited', 'traditions', 'thriving', 'alongside', 'the', 'cream', 'of', 'Asian', 'sophistication,', 'Taiwan', 'is', 'a', 'continent', 'on', 'one', 'green', 'island.']
+------------------------------
+
+
+
+```
