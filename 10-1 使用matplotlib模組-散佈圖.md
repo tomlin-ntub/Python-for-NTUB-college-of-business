@@ -1,4 +1,4 @@
-# 07-1 使用matplotlib模組-散佈圖
+# 10-1 使用matplotlib模組-散佈圖
 
 ### 使用pandas模組讀入csv檔, 再使用matplotlib繪出圖表.
 
