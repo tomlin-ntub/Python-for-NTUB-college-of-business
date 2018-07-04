@@ -1,4 +1,4 @@
-# 06-7 使用pandas模組-排序
+# 9-7 使用pandas模組-排序
 
 ### 使用pandas模組的sort_values(), 以data frame的某欄位值排序.
 
