@@ -1,4 +1,4 @@
-# 9-4 使用pandas模組-使用loc()
+# 09-4 使用pandas模組-使用loc()
 
 ### 使用pandas模組的loc()選取data frame的部分.
 
