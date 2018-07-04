@@ -1,6 +1,6 @@
 # 01 Python基本架構
 
-## 先建立Python整體架構概念, 避免實際撰寫Python程式時, 迷失在Python的某個角落之間.
+## 先建立Python整體概念, 避免實際撰寫Python程式時, 迷失在Python架構中.
 
 #### 參考資料:https://docs.python.org/3/library/index.html
 
