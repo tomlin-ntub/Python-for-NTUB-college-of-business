@@ -239,7 +239,6 @@ fr.close()
 #### 測試檔案(in.txt)
 ```
 With legacies as varied as its adventure landscape and spirited traditions thriving alongside the cream of Asian sophistication, Taiwan is a continent on one green island.
-```男,43,55,49,36,50,10
 ```
 
 
