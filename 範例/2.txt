@@ -211,3 +211,98 @@ print()
 # 正確率
 #---------------------------
 print('正確率:', round(np.sum(results)/len(results), 2))
+
+
+
+
+
+(4)SVM
+#--------------------------------
+# 匯入外部模組
+#--------------------------------
+import numpy as np
+import pandas as pd
+from sklearn import svm
+from sklearn.model_selection import GridSearchCV
+
+#-------------------------------------------------
+# 花萼長:0, 花萼寬:1, 花瓣長:2, 花瓣寬:3, 花種:4
+#-------------------------------------------------
+df = pd.read_csv('iris.csv', names=['d0', 'd1', 'd2', 'd3', 'd4'])
+
+#---------------------------
+# 亂數重排資料
+#---------------------------
+df2 = df.sample(frac=1)
+print(df2)
+
+
+#---------------------------
+# 訓練資料個數
+#---------------------------
+tn=120
+
+#---------------------------
+# 訓練資料及標籤
+#---------------------------
+training_data  = df2[['d0', 'd1', 'd2', 'd3']][:tn]
+training_label = df2['d4'][:tn]
+
+#---------------------------
+# 測試資料及標籤
+#---------------------------
+testing_data  = df2[['d0', 'd1', 'd2', 'd3']][tn:]
+testing_label = df2['d4'][tn:]
+
+
+#---------------------------
+# 找較好的C及gamma值
+#---------------------------
+param_grid = {'C': [0.1, 0.5, 1, 5, 10, 15, 20, 100, 150, 175, 200, 250, 1000],
+              'gamma': [0.01, 0.05, 0.1, 0.25, 0.5, 1, 2, 3, 4, 5, 10], }
+clf = GridSearchCV(svm.SVC(kernel='rbf'), param_grid)
+clf.fit(training_data, training_label)
+
+print("找出較好的C及gamma")
+best_C=clf.best_estimator_.C
+best_gamma=clf.best_estimator_.gamma
+
+print('C =', best_C)
+print('gamma =', best_gamma)
+print('-'*60)
+
+
+#***********************************************
+# 建立自動分類機器人
+#***********************************************
+svm_rbf = svm.SVC(kernel='rbf', gamma=best_gamma, C=best_C)
+svm_rbf.fit(training_data, training_label)
+
+print('分類機器人參數')
+print(svm_rbf)
+print()
+
+#---------------------------
+# 分類機器人測試
+#---------------------------
+print('正確:')
+print(testing_label.values.tolist())
+print()
+
+predict = svm_rbf.predict(testing_data)
+print('預測:')
+print(predict)
+print()
+
+#---------------------------
+# 和正確資料比對
+#---------------------------
+results = testing_label == predict
+print('比對:')
+print(results.tolist())
+print()
+
+#---------------------------
+# 正確率
+#---------------------------
+print('正確率:', round(np.sum(results)/len(results), 2))
