@@ -222,8 +222,9 @@ df = pd.read_csv('scores.csv', names=['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 
 #----------------------------------
 # 取出一筆記錄(id=100)的各科成績
 #----------------------------------
-data = df[['d2', 'd3', 'd4', 'd5', 'd6', 'd7']][(df['d0']==100)]
-scores = data.values.tolist()[0]
+data = df[['d2', 'd3', 'd4']]
+scores = [df['d2'].mean(), df['d3'].mean(), df['d4'].mean()]
+
 
 #---------------------------
 # 圖形設定
@@ -239,7 +240,7 @@ plt.title('Student Scores')
 #---------------------------
 # 設定X軸
 #---------------------------
-objects = ('Chi', 'Eng', 'Mat', 'Soc', 'Nat', 'Lec')
+objects = ('Chi', 'Eng', 'Mat')
 pos = range(len(objects))
 plt.xticks(pos, objects)
 
