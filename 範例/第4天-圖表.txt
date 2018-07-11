@@ -1,6 +1,6 @@
 (1)直條圖
 #===================================
-# 匯入pandas模組
+# 匯入模組
 #===================================
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -81,7 +81,7 @@ plt.show()
 
 (2)散佈圖
 #===================================
-# 匯入pandas模組
+# 匯入模組
 #===================================
 import pandas as pd
 import matplotlib.pyplot as plt
