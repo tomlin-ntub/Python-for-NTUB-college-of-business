@@ -1,0 +1,68 @@
+(1)
+#--------------------------------
+# 匯入外部模組
+#--------------------------------
+import jieba
+
+#--------------------------------
+# 存停用詞, 分詞, 正向, 過濾後分詞
+#--------------------------------
+stopWords=[]
+segments=[]
+positives=[]
+remainderWords=[]
+
+#--------------------------------
+# 讀入停用詞檔
+#--------------------------------
+with open('stopWords.txt', 'r', encoding='UTF-8') as file:
+    for data in file.readlines():
+        data = data.strip()
+        stopWords.append(data)
+
+#--------------------------------
+# 讀入正向情緒詞檔
+#--------------------------------
+with open('positives.txt', 'r', encoding='UTF-8') as file:
+    for data in file.readlines():
+        data = data.strip()
+        positives.append(data)
+
+#--------------------------------
+# 讀入文件檔, 進行中文斷詞
+#--------------------------------
+with open('data.txt', 'r', encoding='UTF-8') as file:
+    #讀入文檔
+    text = file.read()
+
+    #結巴中文斷詞
+    segments = jieba.cut(text, cut_all=False)
+
+#------------------------------
+# 移除停用詞及跳行符號
+#------------------------------
+remainderWords = list(filter(lambda a: a not in stopWords and a != '\n', segments))
+
+#------------------------------
+# 印出過濾後屬於正向的分詞
+#------------------------------
+score=0
+pcnt=0
+
+for k in remainderWords:
+    if k in positives:
+        print('+', k)
+        pcnt = pcnt + 1
+
+print('正向詞數目:', pcnt)
+
+
+#------------------------------
+# 評分
+#------------------------------
+score=pcnt / len(remainderWords)
+print('得分:', score)
+
+
+
+
