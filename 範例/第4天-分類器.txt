@@ -159,12 +159,12 @@ knn.fit(training_data, training_label)
 #---------------------------
 # 分類機器人測試
 #---------------------------
-print('正確:')
+print('正確標籤:')
 print(testing_label.values.tolist())
 print()
 
 predict = knn.predict(testing_data)
-print('預測:')
+print('預測標籤:')
 print(predict.tolist())
 print()
 
@@ -172,7 +172,7 @@ print()
 # 和正確資料比對
 #---------------------------
 results = (testing_label == predict)
-print('比對:')
+print('比對結果:')
 print(results.tolist())
 print()
 
