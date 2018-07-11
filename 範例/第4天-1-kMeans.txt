@@ -1,4 +1,3 @@
-
 #===================================
 # 匯入外部模組
 #===================================
@@ -22,15 +21,15 @@ import pandas as pd
 df = pd.read_csv('wholesale.csv', names=['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8'])
 
 #---------------------------
-# 分類資料
+# 測試資料
 #---------------------------
-clustering_data  = df[['d3', 'd4', 'd5', 'd6', 'd7', 'd8']]
+df2  = df[['d3', 'd4', 'd5', 'd6', 'd7', 'd8']]
 
 #---------------------------
 # 建立群聚機器人
 #---------------------------
-nc=6
-kmeans = KMeans(n_clusters=nc, random_state=0).fit(clustering_data)
+nc=3
+kmeans = KMeans(n_clusters=nc, random_state=0).fit(df2)
 
 #---------------------------
 # 群聚機器人產生的群聚標籤
@@ -38,6 +37,7 @@ kmeans = KMeans(n_clusters=nc, random_state=0).fit(clustering_data)
 labels = kmeans.labels_
 print('群聚標籤:', labels)
 print()
+
 #---------------------------
 # 群聚個數
 #---------------------------
@@ -49,7 +49,5 @@ print()
 # 群聚1的資料
 #---------------------------
 print('群聚1的資料')
-print(clustering_data[labels==1])
-
-
+print(df2[labels==1])
 
