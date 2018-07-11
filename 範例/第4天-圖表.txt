@@ -151,7 +151,6 @@ plt.show()
 
 
 
-
 (3)折線圖
 #====================================
 # 匯入外部模組
@@ -175,11 +174,11 @@ df2 = df[(df['d0']>='2001/01/01')]
 #-----------------------------
 # 有條件的選出資料
 #-----------------------------
-data0_A = pd.to_datetime(df2['d0'][df2['d1']=='A'], format='%Y-%m-%d')
-data2_A = df2['d2'][df2['d1']=='A']
+data_1_A = pd.to_datetime(df2['d0'][df2['d1']=='A'], format='%Y-%m-%d')
+data_2_A = df2['d2'][df2['d1']=='A']
 
-data0_B = pd.to_datetime(df2['d0'][df2['d1']=='B'], format='%Y-%m-%d')
-data2_B = df2['d2'][df2['d1']=='B']
+data_1_B = pd.to_datetime(df2['d0'][df2['d1']=='B'], format='%Y-%m-%d')
+data_2_B = df2['d2'][df2['d1']=='B']
 
 #---------------------------
 # 圖形設定/中文設定
@@ -191,8 +190,8 @@ sub = fig.add_subplot(111)
 #---------------------------
 # 繪製資料
 #---------------------------
-sub.plot(data0_A, data2_A, 'b')
-sub.plot(data0_B, data2_B, 'g')
+sub.plot(data_1_A, data_2_A, 'b')
+sub.plot(data_1_B, data_2_B, 'g')
 
 #---------------------------
 # 設定圖標題
@@ -214,3 +213,6 @@ plt.grid(True)
 # 儲存圖形
 #---------------------------
 plt.show()
+
+
+
