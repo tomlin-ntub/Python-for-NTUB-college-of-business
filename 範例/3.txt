@@ -1,0 +1,104 @@
+(1) 樸素貝氏分類器
+#--------------------------------
+# 匯入外部模組
+#--------------------------------
+import numpy as np
+import pandas as pd
+from sklearn.naive_bayes import GaussianNB
+
+#-------------------------------------------------
+# (0) 品級-人工標註
+# (1) Alcohol
+# (2) Malic acid
+# (3) Ash
+# (4) Alcalinity of ash  
+# (5) Magnesium
+# (6) Total phenols
+# (7) Flavanoids
+# (8) Nonflavanoid phenols
+# (9) Proanthocyanins
+# (10)Color intensity
+# (11)Hue
+# (12)OD280/OD315 of diluted wines
+# (13)Proline 
+#-------------------------------------------------
+df = pd.read_csv('wine.csv', names=['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11', 'd12', 'd13'])
+
+#---------------------------
+# 亂數重排資料
+#---------------------------
+df2 = df.sample(frac=1)
+print(df2)
+
+#---------------------------
+# 特徵值正規化
+#---------------------------
+'''
+df['d1'] = (df['d1'] - df['d1'].mean()) / (df['d1'].max() - df['d1'].min())
+df['d2'] = (df['d2'] - df['d2'].mean()) / (df['d2'].max() - df['d2'].min())
+df['d3'] = (df['d3'] - df['d3'].mean()) / (df['d3'].max() - df['d3'].min())
+df['d4'] = (df['d4'] - df['d4'].mean()) / (df['d4'].max() - df['d4'].min())
+df['d5'] = (df['d5'] - df['d5'].mean()) / (df['d5'].max() - df['d5'].min())
+df['d6'] = (df['d6'] - df['d6'].mean()) / (df['d6'].max() - df['d6'].min())
+df['d7'] = (df['d7'] - df['d7'].mean()) / (df['d7'].max() - df['d7'].min())
+df['d8'] = (df['d8'] - df['d8'].mean()) / (df['d8'].max() - df['d8'].min())
+df['d9'] = (df['d9'] - df['d9'].mean()) / (df['d9'].max() - df['d9'].min())
+df['d10'] = (df['d10'] - df['d10'].mean()) / (df['d10'].max() - df['d10'].min())
+df['d11'] = (df['d11'] - df['d11'].mean()) / (df['d11'].max() - df['d11'].min())
+df['d12'] = (df['d12'] - df['d12'].mean()) / (df['d12'].max() - df['d12'].min())
+df['d13'] = (df['d13'] - df['d13'].mean()) / (df['d13'].max() - df['d13'].min())
+'''
+
+#---------------------------
+# 訓練資料個數
+#---------------------------
+tn=120
+
+#---------------------------
+# 訓練資料及標籤
+#---------------------------
+training_data  = df2[['d1', 'd2', 'd3', 'd4']][:tn]
+training_label = df2['d0'][:tn]
+
+#---------------------------
+# 測試資料及標籤
+#---------------------------
+testing_data  = df2[['d1', 'd2', 'd3', 'd4']][tn:]
+testing_label = df2['d0'][tn:]
+
+
+#***********************************************
+# 建立自動分類機器人
+#***********************************************
+gnb = GaussianNB()
+gnb.fit(training_data, training_label)
+
+#---------------------------
+# 分類機器人測試
+#---------------------------
+print('正確標籤:')
+print(testing_label.values.tolist())
+print()
+
+predict = gnb.predict(testing_data)
+print('預測標籤:')
+print(predict)
+print()
+
+#---------------------------
+# 和正確資料比對
+#---------------------------
+results = testing_label == predict
+print('比對結果:')
+print(results.tolist())
+print()
+
+#---------------------------
+# 正確率
+#---------------------------
+print('正確率:', round(np.sum(results)/len(results), 2))
+
+
+
+
+
