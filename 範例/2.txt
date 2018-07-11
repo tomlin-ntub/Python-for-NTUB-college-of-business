@@ -262,6 +262,80 @@ print('正確率:', round(np.sum(results)/len(results), 2))
 
 
 
+(3b)特徵選取
+#--------------------------------
+# 匯入外部模組
+#--------------------------------
+import numpy as np
+import pandas as pd
+from sklearn import svm
+from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVR
+
+#-------------------------------------------------
+# 花萼長:0, 花萼寬:1, 花瓣長:2, 花瓣寬:3, 花種:4
+#-------------------------------------------------
+df = pd.read_csv('liquor.csv', names=['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11'])
+
+#---------------------------
+# 亂數重排資料
+#---------------------------
+df2 = df.sample(frac=1)
+print(df2)
+
+#---------------------------
+# 正規化
+#---------------------------
+df['d0'] = (df['d0'] - df['d0'].mean()) / (df['d0'].max() - df['d0'].min())
+df['d1'] = (df['d1'] - df['d1'].mean()) / (df['d1'].max() - df['d1'].min())
+df['d2'] = (df['d2'] - df['d2'].mean()) / (df['d2'].max() - df['d2'].min())
+df['d3'] = (df['d3'] - df['d3'].mean()) / (df['d3'].max() - df['d3'].min())
+df['d4'] = (df['d4'] - df['d4'].mean()) / (df['d4'].max() - df['d4'].min())
+df['d5'] = (df['d5'] - df['d5'].mean()) / (df['d5'].max() - df['d5'].min())
+df['d6'] = (df['d6'] - df['d6'].mean()) / (df['d6'].max() - df['d6'].min())
+df['d7'] = (df['d7'] - df['d7'].mean()) / (df['d7'].max() - df['d7'].min())
+df['d8'] = (df['d8'] - df['d8'].mean()) / (df['d8'].max() - df['d8'].min())
+df['d9'] = (df['d9'] - df['d9'].mean()) / (df['d9'].max() - df['d9'].min())
+df['d10'] = (df['d10'] - df['d10'].mean()) / (df['d10'].max() - df['d10'].min())
+
+
+
+#---------------------------
+# 訓練資料個數
+#---------------------------
+tn=500
+
+#---------------------------
+# 訓練資料及標籤
+#---------------------------
+training_data  = df2[['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10']][:tn]
+training_label = df2['d11'][:tn]
+
+#------------------------
+# 選用某種分類器
+#------------------------
+#clf=LogisticRegression()
+svr = SVR(kernel="linear")
+
+#----------------------------------
+# 選出2個特徵作為主要分類依據
+#----------------------------------
+#selector=RFE(clf, n_features_to_select=2)
+selector=RFE(svr, n_features_to_select=5)
+
+#----------------------------------
+# 選出之分類特徵
+#----------------------------------
+selector=selector.fit(training_data, training_label)
+print('選出之分類特徵:')
+print('-'*30)
+print(selector.support_)
+print(selector.ranking_)
+
+
+
+
 
 (4)SVM
 #--------------------------------
