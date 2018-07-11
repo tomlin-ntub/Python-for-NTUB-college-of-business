@@ -8,19 +8,19 @@ from sklearn.naive_bayes import GaussianNB
 
 #-------------------------------------------------
 # (0) 品級-人工標註
-# (1) Alcohol
-# (2) Malic acid
-# (3) Ash
-# (4) Alcalinity of ash  
-# (5) Magnesium
-# (6) Total phenols
-# (7) Flavanoids
-# (8) Nonflavanoid phenols
-# (9) Proanthocyanins
-# (10)Color intensity
-# (11)Hue
-# (12)OD280/OD315 of diluted wines
-# (13)Proline 
+#（1）酒精
+#（2）蘋果酸
+#（3）灰
+#（4）灰分的鹼度
+#（5）鎂
+#（6）總酚
+#（7）黃烷類
+#（8）非黃烷類酚類
+#（9）原花青素
+#（10）顏色強度
+#（11）順化
+#（12）稀釋葡萄酒的OD280 / OD315
+#（13）脯氨酸
 #-------------------------------------------------
 df = pd.read_csv('wine.csv', names=['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11', 'd12', 'd13'])
 
