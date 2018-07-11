@@ -409,8 +409,8 @@ testing_label = df2['d0'][tn:]
 #***********************************************
 # 建立自動分類機器人
 #***********************************************
-gnb = GaussianNB()
-gnb.fit(training_data, training_label)
+svm_linear = svm.SVC(kernel='linear', C=1.0)
+svm_linear.fit(training_data, training_label)
 
 #---------------------------
 # 分類機器人測試
@@ -419,7 +419,7 @@ print('正確:')
 print(testing_label.values.tolist())
 print()
 
-predict = gnb.predict(testing_data)
+predict = svm_linear.predict(testing_data)
 print('預測:')
 print(predict)
 print()
@@ -436,7 +436,6 @@ print()
 # 正確率
 #---------------------------
 print('正確率:', round(np.sum(results)/len(results), 2))
-
 
 
 
