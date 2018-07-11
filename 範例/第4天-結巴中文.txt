@@ -140,3 +140,109 @@ with open('sentences.csv', 'r', encoding='UTF-8') as file:
         print('序號:{} 情緒:{} 得分:{}'.format(seq, answer, score))
         print()
 
+
+
+
+
+(3)多個句子測試
+#--------------------------------
+# 匯入外部模組
+#--------------------------------
+import jieba
+
+#--------------------------------
+# 存停用詞, 分詞, 正向, 過濾後分詞
+#--------------------------------
+stopWords=[]
+segments=[]
+positives=[]
+negatives=[]
+remainderWords=[]
+correct=0
+wrong=0
+
+#--------------------------------
+# 讀入停用詞檔
+#--------------------------------
+with open('stopWords.txt', 'r', encoding='UTF-8') as file:
+    for data in file.readlines():
+        data = data.strip()
+        stopWords.append(data)
+
+#--------------------------------
+# 讀入正向情緒詞檔
+#--------------------------------
+with open('positives.txt', 'r', encoding='UTF-8') as file:
+    for data in file.readlines():
+        data = data.strip()
+        positives.append(data)
+
+#--------------------------------
+# 讀入負向情緒詞檔
+#--------------------------------
+with open('negatives.txt', 'r', encoding='UTF-8') as file:
+    for data in file.readlines():
+        data = data.strip()
+        negatives.append(data)
+
+#--------------------------------
+# 讀入文件檔, 進行中文斷詞
+#--------------------------------
+with open('sentences.csv', 'r', encoding='UTF-8') as file:
+    #讀入文檔
+    for data in file.readlines():
+        data=data.strip()
+        items=data.split(',')
+
+        # 序號, 測試句子, 情緒值
+        seq = items[0]
+        testSentence = items[1]
+        answer = int(items[2])
+
+        #結巴中文斷詞
+        segments = jieba.cut(testSentence, cut_all=False)
+
+        #------------------------------
+        # 移除停用詞及跳行符號
+        #------------------------------
+        remainderWords = list(filter(lambda a: a not in stopWords and a != '\n', segments))
+
+        #------------------------------
+        # 印出過濾後屬於正向的分詞
+        #------------------------------
+        score=0
+        pcnt=0
+        ncnt=0
+
+        for k in remainderWords:
+            if k in positives:
+                pcnt = pcnt + 1
+            elif k in negatives:
+                ncnt = ncnt + 1
+
+        print('正向詞數目:', pcnt)
+        print('負向詞數目:', ncnt)
+
+
+        #------------------------------
+        # 單一句子評分
+        #------------------------------
+        score = (pcnt - ncnt) / len(remainderWords)
+        print(testSentence)
+        print('序號:{} 情緒:{} 得分:{}'.format(seq, answer, score))
+        print()
+
+        #------------------------------
+        # 累計句子評分
+        #------------------------------
+        if score > 0 and answer >= 0:
+            correct = correct + 1
+        elif score < 0 and answer <= 0:
+            correct = correct + 1
+        else:
+            wrong = wrong + 1
+
+
+print('正確:', correct)
+print('錯誤:', wrong)
+print('正確率:', correct/(correct+wrong))
