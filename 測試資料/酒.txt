@@ -1,19 +1,18 @@
- 	0) 品級
-	1) Alcohol
- 	2) Malic acid
- 	3) Ash
-	4) Alcalinity of ash  
- 	5) Magnesium
-	6) Total phenols
- 	7) Flavanoids
- 	8) Nonflavanoid phenols
- 	9) Proanthocyanins
-	10)Color intensity
- 	11)Hue
- 	12)OD280/OD315 of diluted wines
- 	13)Proline   
-	
-	
+(0) 品級
+(1) Alcohol
+(2) Malic acid
+(3) Ash
+(4) Alcalinity of ash  
+(5) Magnesium
+(6) Total phenols
+(7) Flavanoids
+(8) Nonflavanoid phenols
+(9) Proanthocyanins
+(10)Color intensity
+(11)Hue
+(12)OD280/OD315 of diluted wines
+(13)Proline   
+-----------------------------------------------------------------------------	
 1,14.23,1.71,2.43,15.6,127,2.8,3.06,.28,2.29,5.64,1.04,3.92,1065
 1,13.2,1.78,2.14,11.2,100,2.65,2.76,.26,1.28,4.38,1.05,3.4,1050
 1,13.16,2.36,2.67,18.6,101,2.8,3.24,.3,2.81,5.68,1.03,3.17,1185
