@@ -120,7 +120,6 @@ df = pd.read_csv('iris.csv', names=['d0', 'd1', 'd2', 'd3', 'd4'])
 df2 = df.sample(frac=1)
 print(df2)
 
-
 #---------------------------
 # 訓練資料個數
 #---------------------------
@@ -208,8 +207,6 @@ df['d7'] = (df['d7'] - df['d7'].mean()) / (df['d7'].max() - df['d7'].min())
 df['d8'] = (df['d8'] - df['d8'].mean()) / (df['d8'].max() - df['d8'].min())
 df['d9'] = (df['d9'] - df['d9'].mean()) / (df['d9'].max() - df['d9'].min())
 df['d10'] = (df['d10'] - df['d10'].mean()) / (df['d10'].max() - df['d10'].min())
-
-
 
 #---------------------------
 # 訓練資料個數
@@ -303,8 +300,6 @@ df['d8'] = (df['d8'] - df['d8'].mean()) / (df['d8'].max() - df['d8'].min())
 df['d9'] = (df['d9'] - df['d9'].mean()) / (df['d9'].max() - df['d9'].min())
 df['d10'] = (df['d10'] - df['d10'].mean()) / (df['d10'].max() - df['d10'].min())
 
-
-
 #---------------------------
 # 訓練資料個數
 #---------------------------
@@ -350,9 +345,11 @@ import pandas as pd
 from sklearn import svm
 
 #-------------------------------------------------
-# 花萼長:0, 花萼寬:1, 花瓣長:2, 花瓣寬:3, 花種:4
+# 固定酸度(0), 揮發性酸度(1), 檸檬酸(2), 殘糖(3)
+# 氯化物(4), 游離二氧化硫(5), 總二氧化硫(6), 密度(7)
+# pH值(8), 硫酸鹽(9), 醇(10), 品級(11)
 #-------------------------------------------------
-df = pd.read_csv('iris.csv', names=['d0', 'd1', 'd2', 'd3', 'd4'])
+df = pd.read_csv('liquor.csv', names=['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11'])
 
 #---------------------------
 # 亂數重排資料
@@ -360,29 +357,45 @@ df = pd.read_csv('iris.csv', names=['d0', 'd1', 'd2', 'd3', 'd4'])
 df2 = df.sample(frac=1)
 print(df2)
 
+#---------------------------
+# 特徵值正規化
+#---------------------------
+'''
+df['d0'] = (df['d0'] - df['d0'].mean()) / (df['d0'].max() - df['d0'].min())
+df['d1'] = (df['d1'] - df['d1'].mean()) / (df['d1'].max() - df['d1'].min())
+df['d2'] = (df['d2'] - df['d2'].mean()) / (df['d2'].max() - df['d2'].min())
+df['d3'] = (df['d3'] - df['d3'].mean()) / (df['d3'].max() - df['d3'].min())
+df['d4'] = (df['d4'] - df['d4'].mean()) / (df['d4'].max() - df['d4'].min())
+df['d5'] = (df['d5'] - df['d5'].mean()) / (df['d5'].max() - df['d5'].min())
+df['d6'] = (df['d6'] - df['d6'].mean()) / (df['d6'].max() - df['d6'].min())
+df['d7'] = (df['d7'] - df['d7'].mean()) / (df['d7'].max() - df['d7'].min())
+df['d8'] = (df['d8'] - df['d8'].mean()) / (df['d8'].max() - df['d8'].min())
+df['d9'] = (df['d9'] - df['d9'].mean()) / (df['d9'].max() - df['d9'].min())
+df['d10'] = (df['d10'] - df['d10'].mean()) / (df['d10'].max() - df['d10'].min())
+'''
 
 #---------------------------
 # 訓練資料個數
 #---------------------------
-tn=120
+tn=4000
 
 #---------------------------
 # 訓練資料及標籤
 #---------------------------
-training_data  = df2[['d0', 'd1']][:tn]
-training_label = df2['d4'][:tn]
+training_data  = df2[['d1', 'd2', 'd9', 'd10']][:tn]
+training_label = df2['d11'][:tn]
 
 #---------------------------
 # 測試資料及標籤
 #---------------------------
-testing_data  = df2[['d0', 'd1']][tn:]
-testing_label = df2['d4'][tn:]
+testing_data  = df2[['d1', 'd2', 'd9', 'd10']][tn:]
+testing_label = df2['d11'][tn:]
 
 
 #***********************************************
 # 建立自動分類機器人
 #***********************************************
-svm_linear = svm.SVC(kernel='rbf', C=1.0)
+svm_linear = svm.SVC(kernel='rbf')
 svm_linear.fit(training_data, training_label)
 
 #---------------------------
@@ -409,6 +422,7 @@ print()
 # 正確率
 #---------------------------
 print('正確率:', round(np.sum(results)/len(results), 2))
+
 
 
 
